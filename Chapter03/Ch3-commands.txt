@@ -1,0 +1,92 @@
+--Below command will give you list of help about command options can be used with mysql command.
+--To use this command you should be using command line and to execute the command you should navigate to \%MySQL_HOME%\MySQL Server 8.0\bin\ Otherwise you can set path for above mentioned directory.
+mysql --verbose --help
+--Below command will be used to connect to mysampledb with user and password from the command line.
+mysql --user=root --password=******** mysampledb
+--Below command will create DB Dump for DB named personnel.
+mysqldump -u root -p personnel
+--Below command will give you list of help command options can be used with mysqlshow command.
+mysqlshow --help
+--Below command will try connecting to mysql server with provided default options.
+mysql
+--Below command will connect to database mysampledb in localhost with user root and mypwd as password, please update option values accordingly.
+mysql --host=localhost --user=root --password=mypwd mysampledb
+--Below command will set User option value in Windows system.
+SET  USER=your_user_name
+--Below lines of command will set MYSQL_TCP_PORT option value in Unix system console - sh, ksh, zsh, bash.
+MYSQL_TCP_PORT=3306 
+export MYSQL_TCP_PORT
+--Below command wil set MYSQL_TCP_PORT option value for console - csh or tcsh.
+setenv MYSQL_TCP_PORT 3306
+--Below command shows option syntax for the mysqld_multi program, use appropriate options to execute the same on command line.
+mysqld_multi [options] {start|stop|reload|report} [GNR[,GNR] ...]
+--Below command is used for secure intallation of mysql, use appropriate options to execute the same on command line.
+mysql_secure_installation [options]
+--Below command is used for ssl and rsa key and certificate generation, use appropriate options to execute the same on command line.
+mysql_ssl_rsa_setup [options]
+--Below commnad is used to load timezone infomation from specified tz_dir directory to mysql database tables. 
+mysql_tzinfo_to_sql tz_dir
+--Below commnad is used to load timezone infomation from specified tz_file with tz_name name to mysql database tables. 
+mysql_tzinfo_to_sql tz_file tz_name
+--Below commnad is used to load timezone infomation from specified tz_file file with leap option to mysql database tables. 
+mysql_tzinfo_to_sql --leap tz_file
+--Below command is used to upgrade mysql version to latest version with specified options.
+mysql_upgrade [options]
+--Below command is used in mysql command prompt for retirieving information from help contents by searching for search_string as specified option value.
+help search_string
+--Below command is used in mysql command prompt for retirieving information from help contents by searching for me as specified option value.
+help me
+--Below command is used to execute specified SQL statements from text_file to specified DB name.
+mysql db_name < text_file
+--Below command is used to execute specified SQL statements from text_file and default DB name will be used instead.
+mysql < text_file
+--Below command is used in mysql command prompt for using file_name as source file for executing SQL statements.
+source file_name
+--Below command provides mysqladmin command with options and command argument syntax with appropriate option values.
+mysqladmin [options] command [command-arg] [command [command-org]] ...
+--Below commands provides mysqlcheck command with options syntax and can be used by providing appropriate option values.
+mysqlcheck [options] db_name [tbl_name ...]
+mysqlcheck [options] --databases db_name ...
+mysqlcheck [options] --all-databases
+--Below commands provides mysqldump command with options syntax and can be used by providing appropriate option values.
+mysqldump [options] db_name [tbl_name ...]
+mysqldump [options] --databases db_name ...
+mysqldump [options] --all-databases
+--Below command provides mysqlimport command with options syntax and can be used by providing appropriate option values.
+mysqlimport [options] db_name textfile1 [textfile2 ...]
+--Below command mysqlpump dumps all the databases by providing option parameter --all-databases
+mysqlpump --all-databases
+--Below command mysqlpump dumps Databases db1 and db2 but among them it will exclude table t1 from database db1 and table t2 from database db2 respectively.
+mysqlpump --include-databases=db1,db2 --exclude-tables=db1.t1,db2.t2
+--Below command provides mysqlshow command with options syntax, used to retrieve information for specified database, or table, or column and can be used by providing appropriate option values.
+mysqlshow [options] [db_name [tbl_name [col_name]]]
+--Below command provides syntax for mysqlslap that checks client load capability.
+mysqlslap [options]
+--Below command checks client load capability with create and query statement as specified in below option with 20 clients and 100 selects to each of the clients.
+mysqlslap --delimiter=";" --create="CREATE TABLE t (i int);INSERT INTO t VALUES (21)" --query="SELECT * FROM t" --concurrency=20 --iterations=100
+--Below command checks client load capability with create and query statement as specified in below option to each of the clients.
+mysqlslap --concurrency=7 --iterations=20 --number-int-cols=2 --number-char-cols=2 --auto-generate-sql
+--Below command specifies program idb2sdi syntax with options and can be used by providing appropriate option values.
+ibd2sdi [options] file_name1 [file_name2 file_name3 ...] 
+--Below command specifies idb2sdi execution with ibdata1 and ibdata2 tablespace files which extracts serialized dictionary information.
+ibd2sdi ibdata1 ibdata2
+--Below is syntax for the command used to verigy checksum of InnoDB file offline and can be used by providing appropriate option values.
+innochecksum [options] file_name
+--Below command is utility for displaying information about MyISAM tables FULLTEXT indexes and can be used by providing appropriate option values.
+myisam_ftdump [options] <table_name> <index_num>
+--Below commands are given for example of myisam_ftdump utility. First line will create table mytexttable and in second line command with specified tablename and index number to be used while scaning on table mytexttable and indexing for the same.
+CREATE TABLE mytexttable ( id INT NOT NULL, txt TEXT NOT NULL, PRIMARY KEY (id), FULLTEXT (txt) ) ENGINE=MyISAM;
+myisam_ftdump mytexttable 1
+--Below command myisam_ftdump is used to generate list of index entries in order of frequency of occurrence as specified, first line in Windows and second line for Unix systems
+myisam_ftdump -c mytexttable 1 | sort /R
+myisam_ftdump -c mytexttable 1 | sort -r
+--Below command is used for getting information about database tables checking, repairing and optimizing non-partitioned MyISAM tables and can be used by providing appropriate option values.
+myisamchk [OPTIONS] tables[.MYI | .MYD]
+--Below command is utility for processing contents of MyISAM log file and can be used by providing appropriate option values.
+myisamlog [options] [file_name [tbl_name] ...]
+--Below commmand is utility program that compresses MyISAM tables and can be used by providing appropriate option values.
+myisampack [options] file_name ...
+--Below command is utility for processing server's binary log files and can be used by providing appropriate option values.
+mysqlbinlog [options] log_file ...
+--Below command is utility which helps in reading the log contents of slow query log files and can be used by providing appropriate option values.
+mysqldumpslow [options] [log_file ...]

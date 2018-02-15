@@ -1,0 +1,26 @@
+-- Following command can be used to ensure that the mysqld server process is running:
+ps xa | grep mysqld
+mysqladmin version
+mysqladmin variables
+mysqladmin -h `hostname` version variables
+mysqladmin -h `hostname` --port=3306 version 
+mysqladmin -h host_ip version
+mysqladmin --protocol=SOCKET --socket=/tmp/mysql.sock version
+
+-- Following is the command to connect to mysql server using the client:
+mysql -u user_name -p
+
+
+--Following command can be used to set a larger value:
+mysql --max_allowed_packet=32M
+
+-- Following command can be used to start the mysql server with tmpdir option:
+mysqld --tmpdir C:/temp
+
+-- Following is an example of providing group access to all new directories:
+UMASK_DIR=504 # = 770 in octal 
+export UMASK_DIR 
+mysqld_safe &
+
+-- Following is an example for mysqladmin version:
+mysqladmin version -u root -p

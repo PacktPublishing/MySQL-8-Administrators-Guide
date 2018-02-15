@@ -1,0 +1,86 @@
+--Need to connect with MySQL 8 using command prompt
+mysql -u root -p;
+
+--To stop MySQL 8 server
+mysqladmin -u root -p shutdown;
+
+--Need to connect with MySQL 8 using command prompt
+mysql -u root -p;
+
+-- Used to start MySQL 8 as Microsoft Window service
+mysqld --install;
+
+-- Used to start MySQL 8 as Microsoft Window service by refering Option file. Change file name and its path as per your system.
+mysqld --install MySQL --defaults-file=E:\my-opts.cnf;
+
+
+-- To start MySQL 8 without Window service
+mysqld --install-manual;
+
+-- Used to remove MySQL 8 service
+mysqld --remove;
+
+--Used to initialize Data Directory with Random password generation
+mysqld –-initialize;
+
+--Used to initialize Data Directory without Random password generation
+mysqld --initialize-insecure;
+
+-- Used to initialize by specifing installation directory and data directory. Change file name and its path as per your system.
+mysqld --initialize --basedir E:\mysql --datadir :\mydata\data;
+
+
+-- Used to take dump of MySQL 8 tables
+mysqldump -u root -p --add-drop-table --routines --events --all-databases   --force > data-for-upgrade.sql;
+
+
+-- Used to restore MySQL dump into current data base
+mysql -u root -p --force < data-for-upgrade.sql;
+
+--Used to check there is no absolute datatypes or function
+mysqlcheck -u root -p--all-databases--check-upgrade;
+
+
+----For Linux using Yum Repository 
+
+--Use for MySQL 8 installation. Replace package_name with actual name of the RPM package
+sudo yum localinstall package_name.rpm;
+
+--To check MySQL yum repository is properly installed or not
+yum repolist enabled | grep "mysql.*-community.*";
+
+-- Used to check series available in Yum repositories
+yum repolist all | grep mysql;
+
+--For development series installation execute below two commands to disable GA release and to enable require development --series and respectively.
+sudo yum-config-manager --disable mysql57-community;
+sudo yum-config-manager --enable mysql80-community;
+
+
+--To check correct subrepositories have been selected or not.
+yum repolist enabled | grep mysql;
+
+
+--Installation of MySQL 8
+sudo yum install mysql-community-server;
+
+--To start MySQL 8 service
+sudo service mysqld start;
+
+-- To check status of MySQL SErvice
+sudo service mysqld status;
+
+-- Installation using Debian Package
+
+--Unpack package downloaded for Deian system
+tar -xvf mysql-server_MVER-DVER_CPU.deb-bundle.tar;
+
+--Execute command for library installation.
+sudo apt-get install libaio1;
+ 
+-- For preconfigure of MySQL 8
+sudo dpkg-preconfigure mysql-community-server_*.deb;
+
+--Used to download any dependency
+sudo apt-get -f install;
+
